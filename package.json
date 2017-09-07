@@ -1,0 +1,36 @@
+{
+  "name": "prometrics",
+  "description": "Prometheus metrics client for Node.js",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/radek/prometrics"
+  },
+  "keywords": [
+    "metrics",
+    "Prometheus",
+    "client"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "preversion": "npm test && jsdoc2md 'lib/**/*.js' > docs/api.md && clog --setversion=$npm_package_version",
+    "version": "git add CHANGELOG.md docs/api.md",
+    "pretest": "eslint -c .eslintrc lib/ test/",
+    "test": "tape 'test/**/*.js' | tap-spec",
+    "dev": "nodemon --watch lib --watch test --exec 'npm test'"
+  },
+  "devDependencies": {
+    "clog-cli": "^1.0.0",
+    "eslint": "^3.8.1",
+    "jsdoc-to-markdown": "^2.0.1",
+    "nodemon": "^1.9.1",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.6.0"
+  },
+  "dependencies": {
+    "prom-client": "^6.3.0"
+  }
+}
